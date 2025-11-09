@@ -3,55 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" type="image/x-icon" href="uofe.png">
-    <title>why._.amrit</title>
+    <meta name="description" content="Amritanshu - Full Stack Developer & Designer. Creating beautiful digital experiences with modern web technologies.">
+    <meta name="author" content="Amritanshu">
+    <link rel="icon" type="image/x-icon" href="uofe.png">
+    <title>Amritanshu - Developer & Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* ==================== CSS Variables ==================== */
         :root {
-            /* Nord Color Palette */
-            --nord0: #2e3440;   /* Polar Night - darkest */
-            --nord1: #3b4252;   /* Polar Night */
-            --nord2: #434c5e;   /* Polar Night */
-            --nord3: #4c566a;   /* Polar Night - lightest */
-            
-            --nord4: #d8dee9;   /* Snow Storm - darkest */
-            --nord5: #e5e9f0;   /* Snow Storm */
-            --nord6: #eceff4;   /* Snow Storm - lightest */
-            
-            --nord7: #8fbcbb;   /* Frost - teal */
-            --nord8: #88c0d0;   /* Frost - light blue */
-            --nord9: #81a1c1;   /* Frost - blue */
-            --nord10: #5e81ac;  /* Frost - dark blue */
-            
-            --nord11: #bf616a;  /* Aurora - red */
-            --nord12: #d08770;  /* Aurora - orange */
-            --nord13: #ebcb8b;  /* Aurora - yellow */
-            --nord14: #a3be8c;  /* Aurora - green */
-            --nord15: #b48ead;  /* Aurora - purple */
-
-            /* Theme Variables */
-            --bg-primary: var(--nord0);
-            --bg-secondary: var(--nord1);
-            --bg-tertiary: var(--nord2);
-            --bg-quaternary: var(--nord3);
-            --text-primary: var(--nord6);
-            --text-secondary: var(--nord4);
-            --text-tertiary: var(--nord3);
-            --accent: var(--nord8);
-            --accent-hover: var(--nord9);
-            --accent-secondary: var(--nord10);
-            --success: var(--nord14);
-            --warning: var(--nord13);
-            --error: var(--nord11);
-            --separator: var(--nord3);
-            --frost-teal: var(--nord7);
-            --aurora-purple: var(--nord15);
-            --aurora-orange: var(--nord12);
+            /* Light Theme (Default) */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-light: rgba(59, 130, 246, 0.1);
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --bg-tertiary: #252d3d;
+            --text-primary: #e6edf3;
+            --text-secondary: #9ca3af;
+            --text-tertiary: #6b7280;
+            --accent: #60a5fa;
+            --accent-hover: #93c5fd;
+            --accent-light: rgba(96, 165, 250, 0.1);
+            --border-color: #2d3748;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
         }
 
+        /* ==================== Reset & Base Styles ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -59,89 +65,152 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Nord-inspired animated background */
-        .bg-aurora {
+        /* ==================== Navigation ==================== */
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.03;
-            background: radial-gradient(ellipse at top, var(--nord8), transparent 50%), 
-                        radial-gradient(ellipse at bottom, var(--nord15), transparent 50%);
-            animation: aurora 20s ease-in-out infinite alternate;
+            right: 0;
+            z-index: 1000;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-        @keyframes aurora {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.03; }
-            50% { transform: scale(1.1) rotate(2deg); opacity: 0.05; }
+        .nav.scrolled {
+            box-shadow: var(--shadow-md);
         }
 
-        .bg-snowflakes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .snowflake {
-            position: absolute;
-            color: var(--nord4);
-            user-select: none;
-            pointer-events: none;
-            font-size: 12px;
-            animation: snowfall linear infinite;
-        }
-
-        @keyframes snowfall {
-            0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        .container {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 24px;
-            min-height: 100vh;
+            padding: 1rem 2rem;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
             position: relative;
         }
 
-        /* Nord-themed scroll indicator */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
             left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(to right, var(--nord8), var(--nord10));
-            z-index: 1000;
-            transition: width 0.1s ease;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
 
-        .hero-section {
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background: var(--accent-light);
+            transform: rotate(180deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ==================== Hero Section ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--accent) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .hero-content {
+            max-width: 900px;
             text-align: center;
-            margin-bottom: 100px;
-            animation: fadeInUp 1.2s ease-out;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(60px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -149,1012 +218,890 @@
             }
         }
 
-        .name {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--nord8) 50%, var(--nord10) 100%);
+        .hero-tag {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: slideIn 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 300% 300%;
-            animation: nordGradient 6s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(143, 188, 187, 0.1);
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
-        @keyframes nordGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .username {
-            font-size: 1.6rem;
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.7s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ==================== Section Common Styles ==================== */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ==================== About Section ==================== */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .about-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-card-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            text-align: center;
             font-weight: 500;
-            margin-bottom: 50px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-light);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ==================== Projects Section ==================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::after {
             opacity: 0;
-            animation: fadeIn 1s ease-out 0.6s forwards;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* ==================== Contact Section ==================== */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .contact-method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-method-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-method-value {
+            color: var(--text-secondary);
+            word-break: break-all;
+        }
+
+        .contact-form {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+        /* ==================== Footer ==================== */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ==================== Responsive Design ==================== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ==================== Accessibility ==================== */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Focus visible for keyboard navigation */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* ==================== Loading Animation ==================== */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
         @keyframes fadeIn {
             to { opacity: 1; }
         }
 
-        .terminal {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 32px;
-            margin: 50px auto;
-            max-width: 700px;
-            border: 1px solid var(--separator);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
-                        0 0 0 1px rgba(143, 188, 187, 0.1);
-        }
-
-        .terminal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(143, 188, 187, 0.05), transparent);
-            animation: nordShimmer 4s infinite;
-        }
-
-        @keyframes nordShimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 28px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--separator);
-        }
-
-        .terminal-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid transparent;
-        }
-
-        .dot:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 15px currentColor;
-        }
-
-        .dot:nth-child(1) { 
-            background: var(--nord11); 
-            border-color: var(--nord11);
-        }
-        .dot:nth-child(2) { 
-            background: var(--nord13); 
-            border-color: var(--nord13);
-        }
-        .dot:nth-child(3) { 
-            background: var(--nord14); 
-            border-color: var(--nord14);
-        }
-
-        .terminal-title {
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1rem;
-            color: var(--text-tertiary);
-            font-weight: 600;
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
-        }
-
-        .terminal-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .terminal-line {
-            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
-            font-size: 1.1rem;
-            margin: 16px 0;
+        /* ==================== Scroll Animation ==================== */
+        .reveal {
             opacity: 0;
-            animation: typewriter 1s ease-out forwards;
-            position: relative;
-            font-weight: 500;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
         }
 
-        .terminal-line::after {
-            content: '▊';
-            animation: nordBlink 1.5s infinite;
-            color: var(--nord8);
-            margin-left: 2px;
-        }
-
-        @keyframes nordBlink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .terminal-line:nth-child(1) { 
-            animation-delay: 0.8s; 
-            color: var(--nord8);
-        }
-        .terminal-line:nth-child(2) { 
-            animation-delay: 1.6s; 
-            color: var(--nord10);
-        }
-        .terminal-line:nth-child(3) { 
-            animation-delay: 2.4s; 
-            color: var(--nord11); 
-        }
-        .terminal-line:nth-child(4) { 
-            animation-delay: 3.2s; 
-            color: var(--nord14); 
-        }
-
-        .terminal-line:last-child::after {
-            animation-delay: 4s;
-        }
-
-        @keyframes typewriter {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(163, 190, 140, 0.1);
-            color: var(--nord14);
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            border: 1px solid rgba(163, 190, 140, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            background: var(--nord14);
-            border-radius: 50%;
-            animation: nordPulse 2.5s infinite;
-            box-shadow: 0 0 15px var(--nord14);
-        }
-
-        @keyframes nordPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.3); }
-        }
-
-        .main-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .card {
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            border: 1px solid var(--separator);
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            backdrop-filter: blur(20px);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--nord8), var(--nord10));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:nth-child(2)::before { 
-            background: linear-gradient(90deg, var(--nord7), var(--nord8)); 
-        }
-        .card:nth-child(3)::before { 
-            background: linear-gradient(90deg, var(--nord10), var(--nord15)); 
-        }
-
-        .card:hover {
-            transform: translateY(-16px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4),
-                        0 0 0 1px rgba(143, 188, 187, 0.15);
-            border-color: var(--nord8);
-        }
-
-        .card:hover::before {
+        .reveal.active {
             opacity: 1;
-        }
-
-        .card-header {
-            padding: 36px 36px 0 36px;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .card-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 28px;
-            line-height: 1.6;
-        }
-
-        .card-content {
-            padding: 0 36px 36px 36px;
-        }
-
-        .links-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .link {
-            display: flex;
-            align-items: center;
-            padding: 20px 28px;
-            background: var(--bg-tertiary);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-            font-weight: 500;
-        }
-
-        .link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(143, 188, 187, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .link:hover {
-            background: var(--bg-quaternary);
-            transform: translateX(12px);
-            border-color: var(--nord8);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-        }
-
-        .link:hover::before {
-            left: 100%;
-        }
-
-        .link-icon {
-            width: 36px;
-            height: 36px;
-            margin-right: 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .link:hover .link-icon {
-            transform: scale(1.15) rotate(3deg);
-        }
-
-        /* Nord-themed link icons */
-        .reddit-icon { background: var(--nord11); color: var(--text-primary); }
-        .instagram-icon { 
-            background: linear-gradient(45deg, var(--nord12), var(--nord15)); 
-            color: var(--text-primary); 
-        }
-        .email-icon { background: var(--nord8); color: var(--text-primary); }
-        .github-icon { background: var(--bg-quaternary); color: var(--text-primary); }
-
-        .message-form {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .input-label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-        }
-
-        .input, .textarea {
-            background: var(--bg-tertiary);
-            border: 2px solid var(--separator);
-            border-radius: 8px;
-            padding: 16px 20px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            resize: none;
-        }
-
-        .input:focus, .textarea:focus {
-            outline: none;
-            border-color: var(--nord8);
-            box-shadow: 0 0 0 3px rgba(143, 188, 187, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .textarea {
-            min-height: 140px;
-            font-family: inherit;
-            line-height: 1.6;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, var(--nord8), var(--nord10));
-            color: var(--text-primary);
-            border: none;
-            border-radius: 8px;
-            padding: 16px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            align-self: flex-start;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(136, 192, 208, 0.3);
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:active {
-            transform: translateY(-1px);
-        }
-
-        .btn:disabled {
-            background: var(--text-tertiary);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 20px;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 28px 20px;
-            background: var(--bg-tertiary);
-            border-radius: 12px;
-            border: 1px solid var(--separator);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--nord8), var(--nord10));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-
-        .stat:hover {
-            transform: translateY(-8px);
-            border-color: var(--nord8);
-            box-shadow: 0 16px 50px rgba(136, 192, 208, 0.2);
-        }
-
-        .stat:hover::before {
-            opacity: 0.08;
-        }
-
-        .stat > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-number {
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, var(--nord8), var(--nord10));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: all 0.4s ease;
-        }
-
-        .stat:hover .stat-number {
-            transform: scale(1.1);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .char-counter {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            text-align: right;
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        .char-counter.warning {
-            color: var(--nord13);
-        }
-
-        .char-counter.danger {
-            color: var(--nord11);
-        }
-
-        .message-info {
-            margin-top: 32px;
-            padding-top: 28px;
-            border-top: 1px solid var(--separator);
-        }
-
-        .info-text {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin: 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 500;
-        }
-
-        .success-message, .error-message {
-            padding: 20px 24px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            animation: nordSlideIn 0.4s ease-out;
-        }
-
-        @keyframes nordSlideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .success-message {
-            background: rgba(163, 190, 140, 0.15);
-            color: var(--nord14);
-            border: 1px solid rgba(163, 190, 140, 0.3);
-        }
-
-        .error-message {
-            background: rgba(191, 97, 106, 0.15);
-            color: var(--nord11);
-            border: 1px solid rgba(191, 97, 106, 0.3);
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 120px;
-            padding-top: 60px;
-            border-top: 1px solid var(--separator);
-        }
-
-        .footer-text {
-            color: var(--text-tertiary);
-            font-size: 1rem;
-            margin-bottom: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .footer-text:hover {
-            color: var(--text-secondary);
-            transform: scale(1.05);
-        }
-
-        .footer-link {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .footer-link:hover {
-            color: var(--nord8);
-        }
-
-        /* Nord glitch effect */
-        .nord-glitch {
-            position: relative;
-            animation: nordGlitchSkew 1s infinite linear alternate-reverse;
-        }
-
-        .nord-glitch::before,
-        .nord-glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-        }
-
-        .nord-glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--nord11);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: nordGlitchAnim 3s infinite linear alternate-reverse;
-        }
-
-        .nord-glitch::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--nord8), 2px 2px var(--nord11);
-            animation: nordGlitchAnim2 2s infinite linear alternate-reverse;
-        }
-
-        @keyframes nordGlitchAnim {
-            0% { clip: rect(31px, 9999px, 94px, 0); }
-            20% { clip: rect(91px, 9999px, 43px, 0); }
-            40% { clip: rect(65px, 9999px, 21px, 0); }
-            60% { clip: rect(15px, 9999px, 87px, 0); }
-            80% { clip: rect(73px, 9999px, 32px, 0); }
-            100% { clip: rect(52px, 9999px, 68px, 0); }
-        }
-
-        @keyframes nordGlitchAnim2 {
-            0% { clip: rect(65px, 9999px, 119px, 0); }
-            20% { clip: rect(36px, 9999px, 39px, 0); }
-            40% { clip: rect(85px, 9999px, 66px, 0); }
-            60% { clip: rect(91px, 9999px, 82px, 0); }
-            80% { clip: rect(2px, 9999px, 75px, 0); }
-            100% { clip: rect(28px, 9999px, 48px, 0); }
-        }
-
-        @keyframes nordGlitchSkew {
-            0% { transform: skew(-0.5deg); }
-            10% { transform: skew(1deg); }
-            20% { transform: skew(-1deg); }
-            30% { transform: skew(0.5deg); }
-            40% { transform: skew(-0.5deg); }
-            50% { transform: skew(1deg); }
-            60% { transform: skew(-1deg); }
-            70% { transform: skew(0.5deg); }
-            80% { transform: skew(-0.5deg); }
-            90% { transform: skew(1deg); }
-            100% { transform: skew(-0.5deg); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 20px;
-            }
-            
-            .main-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .card-header, .card-content {
-                padding: 28px 28px;
-            }
-
-            .card-header {
-                padding-bottom: 0;
-            }
-
-            .name {
-                font-size: 2.8rem;
-            }
-
-            .terminal {
-                padding: 24px;
-                margin: 40px auto;
-            }
-
-            .link {
-                padding: 18px 24px;
-            }
-        }
-
-        /* Theme toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--bg-secondary);
-            border: 2px solid var(--separator);
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 100;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .theme-toggle:hover {
-            background: var(--bg-tertiary);
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 12px 35px rgba(136, 192, 208, 0.2);
-            border-color: var(--nord8);
-        }
-
-        /* Loading spinner */
-        .btn-loading::after {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            margin: auto;
-            border: 2px solid transparent;
-            border-top-color: var(--text-primary);
-            border-radius: 50%;
-            animation: nordSpin 1s linear infinite;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        @keyframes nordSpin {
-            0% { transform: translateY(-50%) rotate(0deg); }
-            100% { transform: translateY(-50%) rotate(360deg); }
-        }
-
-        /* Nord Aurora effect for special occasions */
-        @keyframes nordAurora {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .aurora-mode {
-            background: linear-gradient(45deg, 
-                var(--nord8), var(--nord10), var(--nord15), 
-                var(--nord14), var(--nord13), var(--nord12), var(--nord11)) !important;
-            background-size: 800% 800% !important;
-            animation: nordAurora 4s ease infinite !important;
-        }
-
-        /* Additional CSS animations */
-        @keyframes nordShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-3px) rotateZ(-0.5deg); }
-            75% { transform: translateX(3px) rotateZ(0.5deg); }
-        }
-
-        @keyframes nordBounce {
-            0%, 20%, 50%, 80%, 100% { transform: translate(-50%, -50%) translateY(0); }
-            40% { transform: translate(-50%, -50%) translateY(-15px); }
-            60% { transform: translate(-50%, -50%) translateY(-8px); }
-        }
-        
-        @keyframes nordRipple {
-            to { transform: scale(3); opacity: 0; }
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Scroll progress indicator -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Nord aurora background -->
-    <div class="bg-aurora"></div>
-    
-    <!-- Animated snowflakes -->
-    <div class="bg-snowflakes" id="snowflakes"></div>
-    
-    <!-- Theme toggle -->
-    <button class="theme-toggle" id="themeToggle" title="Toggle Nord theme">❄️</button>
-    
-    <div class="container">
-        <section class="hero-section">
-            <div class="status-indicator">
-                <div class="status-dot"></div>
-                <span>Available for Arctic adventures</span>
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" aria-label="Home">A.</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <span id="menuIcon">☰</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero loading" role="banner">
+        <div class="hero-background" aria-hidden="true"></div>
+        <div class="hero-content">
+            <span class="hero-tag">👋 Available for new opportunities</span>
+            <h1 class="hero-title">Hi, I'm Amritanshu</h1>
+            <p class="hero-subtitle">
+                Full Stack Developer & Designer crafting beautiful, functional digital experiences 
+                with modern web technologies and creative problem-solving.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View My Work →</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section reveal">
+        <div class="section-header">
+            <span class="section-tag">About Me</span>
+            <h2 class="section-title">What I Do</h2>
+            <p class="section-description">
+                I'm passionate about building exceptional digital experiences that combine 
+                aesthetics with functionality.
+            </p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-card">
+                <div class="about-card-icon">💻</div>
+                <h3 class="about-card-title">Development</h3>
+                <p class="about-card-description">
+                    Building scalable, performant web applications using modern frameworks 
+                    and best practices. Focus on clean code and excellent user experience.
+                </p>
             </div>
             
-            <h1 class="name">Amritanshu</h1>
-            <p class="username">why._.amrit</p>
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <div class="dot" title="Close terminal"></div>
-                        <div class="dot" title="Minimize terminal"></div>
-                        <div class="dot" title="Maximize terminal"></div>
-                    </div>
-                    <div class="terminal-title">~/usr/amrit/nord_status</div>
-                </div>
-                <div class="terminal-content">
-                    <div class="terminal-line">> Present yet elsewhere👻...</div>
-                    <div class="terminal-line">> Searching for peace: Error 404!</div>
-                    <div class="terminal-line">> Warning: Too much boredom detected ❄️</div>
-                    <div class="terminal-line">> Between pixels and poetry!</div>
-                </div>
+            <div class="about-card">
+                <div class="about-card-icon">🎨</div>
+                <h3 class="about-card-title">Design</h3>
+                <p class="about-card-description">
+                    Creating beautiful, intuitive interfaces with attention to detail. 
+                    Balancing aesthetics with usability for delightful user experiences.
+                </p>
             </div>
-        </section>
-
-        <div class="main-grid">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Connect</h2>
-                    <p class="card-subtitle">Find me across the frozen digital landscape</p>
-                </div>
-                <div class="card-content">
-                    <div class="links-grid">
-                        <a href="https://www.reddit.com/user/Ecstatic_Rub_548/" class="link" target="_blank" rel="noopener">
-                            <div class="link-icon reddit-icon">💬</div>
-                            <span>Reddit</span>
-                        </a>
-                        
-                        <a href="https://www.instagram.com/why._.amrit" class="link" target="_blank" rel="noopener">
-                            <div class="link-icon instagram-icon">📸</div>
-                            <span>Instagram</span>
-                        </a>
-                        
-                        <a href="mailto:amritanshu@duck.com" class="link">
-                            <div class="link-icon email-icon">📧</div>
-                            <span>Email</span>
-                        </a>
-
-                        <a href="https://github.com/theak12" class="link" target="_blank" rel="noopener">
-                            <div class="link-icon github-icon">⚡</div>
-                            <span>GitHub</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Arctic Message</h2>
-                    <p class="card-subtitle">Send a message through the northern winds</p>
-                </div>
-                <div class="card-content">
-                    <form class="message-form" id="messageForm">
-                        <div class="input-group">
-                            <label class="input-label">Your Message</label>
-                            <textarea class="textarea" id="messageText" name="message" placeholder="Share your thoughts from the frozen realm..." required maxlength="500"></textarea>
-                            <div class="char-counter" id="charCounter">500 characters remaining</div>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label class="input-label">Alias (Optional)</label>
-                            <input type="text" class="input" id="messageAlias" name="alias" placeholder="Arctic Explorer" maxlength="30">
-                        </div>
-                        
-                        <button type="submit" class="btn" id="sendBtn">
-                            <span>Send Message</span>
-                        </button>
-                    </form>
-                    <div id="messageStatus"></div>
-                    
-                    <div class="message-info">
-                        <p class="info-text">❄️ Encrypted through Nordic frost</p>
-                        <p class="info-text">🔒 Aurora-level security guaranteed</p>
-                        <p class="info-text">⚡ Lightning-fast Arctic delivery</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Some Stats</h2>
-                    <p class="card-subtitle">Real-time metrics from the frozen frontier</p>
-                </div>
-                <div class="card-content">
-                    <div class="stats-grid">
-                        <div class="stat" title="Click for more frost">
-                            <div class="stat-number" id="coffeeCount">∞</div>
-                            <div class="stat-label">Hot Coffees</div>
-                        </div>
-                        <div class="stat" title="Click to freeze">
-                            <div class="stat-number" id="codeLines">404</div>
-                            <div class="stat-label">Frozen Lines</div>
-                        </div>
-                        <div class="stat" title="Click to debug">
-                            <div class="stat-number" id="bugsFixed">❄️</div>
-                            <div class="stat-label">Bugs</div>
-                        </div>
-                        <div class="stat" title="Click for aurora">
-                            <div class="stat-number" id="ideasCount">∞</div>
-                            <div class="stat-label">Ideas</div>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="about-card">
+                <div class="about-card-icon">⚡</div>
+                <h3 class="about-card-title">Performance</h3>
+                <p class="about-card-description">
+                    Optimizing applications for speed and efficiency. Ensuring fast load times 
+                    and smooth interactions across all devices.
+                </p>
             </div>
         </div>
 
-        <footer class="footer">
-            <a href="https://theak12.github.io" class="footer-link" target="_blank" rel="noopener">theak12.github.io</a>
-        </footer>
-    </div>
+        <div class="skills-grid">
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">React</div>
+            <div class="skill-tag">Node.js</div>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">HTML/CSS</div>
+            <div class="skill-tag">Git</div>
+            <div class="skill-tag">UI/UX</div>
+            <div class="skill-tag">TypeScript</div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section reveal">
+        <div class="section-header">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">
+                A selection of my recent work showcasing various technologies and design approaches.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <article class="project-card">
+                <div class="project-image">🚀</div>
+                <div class="project-content">
+                    <h3 class="project-title">Project One</h3>
+                    <p class="project-description">
+                        A modern web application built with cutting-edge technologies, 
+                        featuring responsive design and smooth animations.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">Node.js</span>
+                        <span class="project-tag">MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" aria-label="View project demo">
+                            Demo →
+                        </a>
+                        <a href="https://github.com/theak12" class="project-link" aria-label="View project code">
+                            Code →
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">🎨</div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Two</h3>
+                    <p class="project-description">
+                        An elegant design system with reusable components, 
+                        focusing on accessibility and user experience.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">TypeScript</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">Figma</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" aria-label="View project demo">
+                            Demo →
+                        </a>
+                        <a href="https://github.com/theak12" class="project-link" aria-label="View project code">
+                            Code →
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image">⚡</div>
+                <div class="project-content">
+                    <h3 class="project-title">Project Three</h3>
+                    <p class="project-description">
+                        A high-performance application optimized for speed, 
+                        delivering exceptional user experiences across devices.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">API</span>
+                        <span class="project-tag">PWA</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" aria-label="View project demo">
+                            Demo →
+                        </a>
+                        <a href="https://github.com/theak12" class="project-link" aria-label="View project code">
+                            Code →
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section reveal">
+        <div class="section-header">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-description">
+                Have a project in mind? I'd love to hear from you. Let's create something amazing together.
+            </p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-methods">
+                <a href="mailto:amritanshu@duck.com" class="contact-method" aria-label="Email me">
+                    <div class="contact-method-icon">📧</div>
+                    <h3 class="contact-method-title">Email</h3>
+                    <p class="contact-method-value">amritanshu@duck.com</p>
+                </a>
+
+                <a href="https://github.com/theak12" target="_blank" rel="noopener noreferrer" class="contact-method" aria-label="Visit my GitHub">
+                    <div class="contact-method-icon">💻</div>
+                    <h3 class="contact-method-title">GitHub</h3>
+                    <p class="contact-method-value">@theak12</p>
+                </a>
+
+                <a href="https://www.instagram.com/why._.amrit" target="_blank" rel="noopener noreferrer" class="contact-method" aria-label="Visit my Instagram">
+                    <div class="contact-method-icon">📸</div>
+                    <h3 class="contact-method-title">Instagram</h3>
+                    <p class="contact-method-value">@why._.amrit</p>
+                </a>
+            </div>
+
+            <form class="contact-form" id="contactForm" aria-label="Contact form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form-input" 
+                        required 
+                        aria-required="true"
+                        placeholder="Your name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        required 
+                        aria-required="true"
+                        placeholder="your@email.com"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        class="form-textarea" 
+                        required 
+                        aria-required="true"
+                        placeholder="Tell me about your project..."
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">
+                    Send Message →
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://github.com/theak12" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                    <span aria-hidden="true">💻</span>
+                </a>
+                <a href="https://www.instagram.com/why._.amrit" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <span aria-hidden="true">📸</span>
+                </a>
+                <a href="https://www.reddit.com/user/Ecstatic_Rub_548/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Reddit">
+                    <span aria-hidden="true">💬</span>
+                </a>
+                <a href="mailto:amritanshu@duck.com" class="social-link" aria-label="Email">
+                    <span aria-hidden="true">📧</span>
+                </a>
+            </div>
+            <p class="footer-text">
+                © 2024 Amritanshu. Crafted with care and attention to detail.
+            </p>
+        </div>
+    </footer>
 
     <script>
-        // Initialize Nordic snowflakes
-        function createSnowflakes() {
-            const snowContainer = document.getElementById('snowflakes');
-            const snowflakeCount = 30;
-            const snowflakeSymbols = ['❄', '❅', '⋆', '✦', '◆', '◇'];
-            
-            for (let i = 0; i < snowflakeCount; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
-                snowflake.style.left = Math.random() * 100 + '%';
-                snowflake.style.animationDelay = Math.random() * 15 + 's';
-                snowflake.style.animationDuration = (10 + Math.random() * 10) + 's';
-                snowflake.style.fontSize = (Math.random() * 10 + 12) + 'px';
-                snowflake.style.opacity = Math.random() * 0.8 + 0.2;
-                snowContainer.appendChild(snowflake);
-            }
-        }
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
 
-        // Nordic scroll progress
-        function updateScrollProgress() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercentage = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = scrollPercentage + '%';
-        }
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
 
-        // Nordic theme toggle
-        function initNordThemeToggle() {
-            const themeToggle = document.getElementById('themeToggle');
-            let isWinter = true;
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
             
-            themeToggle.addEventListener('click', function() {
-                isWinter = !isWinter;
-                
-                if (isWinter) {
-                    // Winter Nord theme
-                    themeToggle.textContent = '❄️';
-                    document.documentElement.style.setProperty('--bg-primary', '#2e3440');
-                    document.documentElement.style.setProperty('--bg-secondary', '#3b4252');
-                    document.documentElement.style.setProperty('--text-primary', '#eceff4');
-                    document.querySelector('.status-indicator span').textContent = 'Available for Arctic adventures';
-                } else {
-                    // Summer Nord theme (lighter)
-                    themeToggle.textContent = '☀️';
-                    document.documentElement.style.setProperty('--bg-primary', '#eceff4');
-                    document.documentElement.style.setProperty('--bg-secondary', '#e5e9f0');
-                    document.documentElement.style.setProperty('--text-primary', '#2e3440');
-                    document.querySelector('.status-indicator span').textContent = 'Available for Summer adventures';
-                }
-                
-                // Create Nordic ripple effect
-                createNordRipple(this);
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuIcon.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuIcon.textContent = '☰';
             });
-        }
+        });
 
-        // Create Nord-themed ripple effect
-        function createNordRipple(element) {
-            const ripple = document.createElement('div');
-            ripple.style.cssText = `
-                position: absolute;
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                background: radial-gradient(circle, rgba(136,192,208,0.4), transparent 70%);
-                transform: scale(0);
-                animation: nordRipple 0.8s linear;
-                pointer-events: none;
-            `;
-            
-            const rect = element.getBoundingClientRect();
-            ripple.style.left = (rect.left + rect.width/2 - 60) + 'px';
-            ripple.style.top = (rect.top + rect.height/2 - 60) + 'px';
-            
-            document.body.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 800);
-        }
+        // Navbar scroll effect
+        const nav = document.querySelector('.nav');
+        let lastScroll = 0;
 
-        // Fixed message form handler
-        document.getElementById('messageForm').addEventListener('submit', async function(e) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Check on load
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const messageText = document.getElementById('messageText').value.trim();
-            const messageAlias = document.getElementById('messageAlias').value.trim() || 'Arctic Explorer';
-            const sendBtn = document.getElementById('sendBtn');
-            const statusDiv = document.getElementById('messageStatus');
+            const formData = new FormData(contactForm);
+            const submitBtn = contactForm.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
             
-            if (!messageText) {
-                statusDiv.innerHTML = '<div class="error-message">❄️ Please enter a message before sending through the frost.</div>';
-                return;
-            }
-            
-            // Nordic loading state
-            sendBtn.disabled = true;
-            sendBtn.classList.add('btn-loading');
-            sendBtn.querySelector('span').textContent = 'Sending through Aurora...';
-            statusDiv.innerHTML = '';
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             
             try {
-                // Create form data
-                const formData = new FormData();
-                formData.append('message', messageText);
-                formData.append('alias', messageAlias);
-                formData.append('timestamp', new Date().toLocaleString('en-IN', { 
-                    timeZone: 'Asia/Kolkata',
-                    dateStyle: 'full',
-                    timeStyle: 'medium'
-                }));
-                formData.append('theme', 'Nordic Frost');
+                // Add timestamp
+                formData.append('timestamp', new Date().toISOString());
                 
-                // Send to Formspree with correct endpoint
                 const response = await fetch('https://formspree.io/f/meoznzqk', {
                     method: 'POST',
                     body: formData,
@@ -1164,285 +1111,62 @@
                 });
                 
                 if (response.ok) {
-                    statusDiv.innerHTML = '<div class="success-message">❄️ Message delivered through the Northern winds! Thanks for reaching out.</div>';
+                    // Success
+                    submitBtn.textContent = '✓ Message Sent!';
+                    submitBtn.style.background = '#10b981';
+                    contactForm.reset();
                     
-                    // Reset form
-                    document.getElementById('messageText').value = '';
-                    document.getElementById('messageAlias').value = '';
-                    document.getElementById('charCounter').textContent = '500 characters remaining';
-                    document.getElementById('charCounter').classList.remove('warning', 'danger');
-                    
-                    // Nordic celebration effect
-                    createNordAurora();
-                } else {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Failed to send message');
-                }
-                
-            } catch (error) {
-                console.error('Error sending message:', error);
-                statusDiv.innerHTML = '<div class="error-message">❌ Arctic winds too strong. Please try again or email me directly at amritanshu@duck.com</div>';
-            }
-            
-            // Reset button state
-            sendBtn.disabled = false;
-            sendBtn.classList.remove('btn-loading');
-            sendBtn.querySelector('span').textContent = 'Send Message';
-            
-            // Auto-clear status after 8 seconds
-            setTimeout(() => {
-                statusDiv.innerHTML = '';
-            }, 8000);
-        });
-
-        // Enhanced character counter with Nordic styling
-        const textarea = document.getElementById('messageText');
-        const charCounter = document.getElementById('charCounter');
-        
-        textarea.addEventListener('input', function() {
-            const remaining = 500 - this.value.length;
-            charCounter.textContent = `${remaining} characters remaining`;
-            
-            charCounter.classList.remove('warning', 'danger');
-            
-            if (remaining < 100) {
-                charCounter.classList.add('warning');
-            }
-            if (remaining < 50) {
-                charCounter.classList.remove('warning');
-                charCounter.classList.add('danger');
-            }
-        });
-
-        // Nordic animated stats with click interaction
-        function animateNordStats() {
-            const stats = [
-                { id: 'coffeeCount', values: ['∞', '☕', '🔥', '∞', '❄️'] },
-                { id: 'codeLines', values: ['404', '∞', '❄️', '404', '⚡'] },
-                { id: 'bugsFixed', values: ['❄️', '∞', '🐛', '❄️', '✨'] },
-                { id: 'ideasCount', values: ['∞', '💡', '❄️', '∞', '🌟'] }
-            ];
-            
-            stats.forEach(stat => {
-                let currentIndex = 0;
-                const element = document.getElementById(stat.id);
-                const statCard = element.closest('.stat');
-                
-                // Auto animation with Nordic timing
-                const interval = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % stat.values.length;
-                    element.textContent = stat.values[currentIndex];
-                }, 5000 + Math.random() * 3000);
-                
-                // Click to randomize with frost effect
-                statCard.addEventListener('click', function() {
-                    const randomIndex = Math.floor(Math.random() * stat.values.length);
-                    element.textContent = stat.values[randomIndex];
-                    
-                    // Add Nordic click animation
-                    this.style.transform = 'scale(0.95)';
-                    this.style.borderColor = 'var(--nord8)';
+                    // Reset button after 3 seconds
                     setTimeout(() => {
-                        this.style.transform = '';
-                        this.style.borderColor = '';
-                    }, 200);
-                    
-                    // Create mini aurora effect
-                    createMiniAurora(this);
-                });
-            });
-        }
-
-        // Nordic Aurora celebration effect
-        function createNordAurora() {
-            const nordColors = ['#88c0d0', '#81a1c1', '#5e81ac', '#8fbcbb', '#b48ead', '#a3be8c'];
-            
-            for (let i = 0; i < 150; i++) {
-                const auroraParticle = document.createElement('div');
-                auroraParticle.style.cssText = `
-                    position: fixed;
-                    width: ${Math.random() * 8 + 4}px;
-                    height: ${Math.random() * 8 + 4}px;
-                    background: ${nordColors[Math.floor(Math.random() * nordColors.length)]};
-                    border-radius: 50%;
-                    left: 50%;
-                    top: 50%;
-                    pointer-events: none;
-                    z-index: 1000;
-                    box-shadow: 0 0 10px currentColor;
-                `;
-                
-                document.body.appendChild(auroraParticle);
-                
-                const angle = Math.random() * Math.PI * 2;
-                const velocity = Math.random() * 15 + 10;
-                const duration = Math.random() * 2000 + 3000;
-                
-                auroraParticle.animate([
-                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-                    { 
-                        transform: `translate(${Math.cos(angle) * velocity * 25}px, ${Math.sin(angle) * velocity * 25}px) scale(0)`,
-                        opacity: 0 
-                    }
-                ], {
-                    duration: duration,
-                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                }).onfinish = () => auroraParticle.remove();
-            }
-        }
-
-        // Mini aurora effect for stat clicks
-        function createMiniAurora(element) {
-            const nordColors = ['#88c0d0', '#81a1c1', '#8fbcbb'];
-            
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 4px;
-                    height: 4px;
-                    background: ${nordColors[Math.floor(Math.random() * nordColors.length)]};
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 1000;
-                    box-shadow: 0 0 6px currentColor;
-                `;
-                
-                const rect = element.getBoundingClientRect();
-                particle.style.left = (rect.left + rect.width/2) + 'px';
-                particle.style.top = (rect.top + rect.height/2) + 'px';
-                
-                document.body.appendChild(particle);
-                
-                const angle = (i / 20) * Math.PI * 2;
-                const distance = Math.random() * 60 + 30;
-                
-                particle.animate([
-                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-                    { 
-                        transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`,
-                        opacity: 0 
-                    }
-                ], {
-                    duration: 1500,
-                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                }).onfinish = () => particle.remove();
-            }
-        }
-
-        // Enhanced Nordic typewriter effect
-        function initNordTypewriterEffect() {
-            const terminalLines = document.querySelectorAll('.terminal-line');
-            terminalLines.forEach((line, index) => {
-                const text = line.textContent;
-                line.textContent = '';
-                line.style.opacity = '1';
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                submitBtn.textContent = '✕ Failed. Try again?';
+                submitBtn.style.background = '#ef4444';
                 
                 setTimeout(() => {
-                    let charIndex = 0;
-                    const typingInterval = setInterval(() => {
-                        line.textContent += text[charIndex];
-                        charIndex++;
-                        
-                        // Add Nordic color flicker
-                        if (Math.random() > 0.8) {
-                            const nordColors = ['#88c0d0', '#81a1c1', '#8fbcbb', '#5e81ac'];
-                            line.style.color = nordColors[Math.floor(Math.random() * nordColors.length)];
-                            setTimeout(() => {
-                                if (index === 2) line.style.color = 'var(--nord11)';
-                                else if (index === 3) line.style.color = 'var(--nord14)';
-                                else line.style.color = '';
-                            }, 150);
-                        }
-                        
-                        if (charIndex >= text.length) {
-                            clearInterval(typingInterval);
-                        }
-                    }, 50 + Math.random() * 40);
-                }, (index + 1) * 1000);
-            });
-        }
-
-        // Nordic Konami code (modified sequence)
-        let nordKonamiCode = [];
-        const nordKonamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyN', 'KeyF'];
-        
-        document.addEventListener('keydown', function(e) {
-            nordKonamiCode.push(e.code);
-            if (nordKonamiCode.length > nordKonamiSequence.length) {
-                nordKonamiCode.shift();
-            }
-            
-            if (JSON.stringify(nordKonamiCode) === JSON.stringify(nordKonamiSequence)) {
-                // Nordic Aurora mode
-                document.body.classList.add('aurora-mode');
-                
-                // Add Nordic celebration message
-                const celebration = document.createElement('div');
-                celebration.innerHTML = '❄️ NORDIC AURORA ACTIVATED! ❄️';
-                celebration.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    font-size: 2.5rem;
-                    font-weight: 800;
-                    color: var(--nord6);
-                    text-shadow: 0 0 20px var(--nord8);
-                    z-index: 1000;
-                    animation: nordBounce 3s ease-in-out infinite;
-                `;
-                
-                document.body.appendChild(celebration);
-                
-                setTimeout(() => {
-                    document.body.classList.remove('aurora-mode');
-                    celebration.remove();
-                }, 10000);
-                
-                createNordAurora();
-                nordKonamiCode = [];
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
             }
         });
 
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            createSnowflakes();
-            initNordThemeToggle();
-            animateNordStats();
-            initNordTypewriterEffect();
-            
-            // Add scroll listener
-            window.addEventListener('scroll', updateScrollProgress);
-            
-            // Add terminal dots functionality with Nordic effects
-            const dots = document.querySelectorAll('.dot');
-            dots[0].addEventListener('click', () => {
-                const terminal = document.querySelector('.terminal');
-                terminal.style.opacity = '0';
-                terminal.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    terminal.style.opacity = '1';
-                    terminal.style.transform = 'scale(1)';
-                    createMiniAurora(terminal);
-                }, 1500);
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
             });
-            
-            dots[1].addEventListener('click', () => {
-                const terminal = document.querySelector('.terminal');
-                terminal.style.transform = 'scale(0.1) rotateY(180deg)';
-                setTimeout(() => {
-                    terminal.style.transform = 'scale(1) rotateY(0deg)';
-                }, 800);
-            });
-            
-            dots[2].addEventListener('click', () => {
-                const terminal = document.querySelector('.terminal');
-                terminal.style.transform = 'scale(1.15) rotateX(5deg)';
-                setTimeout(() => {
-                    terminal.style.transform = 'scale(1) rotateX(0deg)';
-                }, 1000);
-            });
+        });
+
+        // Add keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            // ESC key closes mobile menu
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuIcon.textContent = '☰';
+            }
+        });
+
+        // Remove loading class after page load
+        window.addEventListener('load', () => {
+            document.querySelector('.hero').classList.remove('loading');
         });
     </script>
 </body>
