@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Amritanshu - present, yet elsewhere 👻" />
@@ -9,870 +9,952 @@
     <title>Amritanshu | Present, Yet Elsewhere 👻</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --bg: #fafaf8;
-        --fg: #0a0a0a;
-        --accent: #ff6b35;
-        --secondary: #004e89;
-        --tertiary: #f7b801;
-      }
-
-      html, body {
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-      }
-
-      body {
-        font-family: "Space Grotesk", sans-serif;
-        background: var(--bg);
-        color: var(--fg);
-        line-height: 1.6;
-      }
-
-      /* ==================== Animated Background ==================== */
-      .bg-animation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      .blob {
-        position: absolute;
-        mix-blend-mode: multiply;
-        filter: blur(80px);
-        opacity: 0.4;
-        will-change: transform;
-      }
-
-      .blob-1 {
-        width: 300px;
-        height: 300px;
-        background: #ff6b35;
-        top: 10%;
-        left: 10%;
-        animation: blob1-move 8s ease-in-out infinite;
-      }
-
-      .blob-2 {
-        width: 250px;
-        height: 250px;
-        background: #004e89;
-        top: 60%;
-        right: 10%;
-        animation: blob2-move 10s ease-in-out infinite;
-      }
-
-      .blob-3 {
-        width: 280px;
-        height: 280px;
-        background: #f7b801;
-        bottom: 10%;
-        left: 50%;
-        animation: blob3-move 12s ease-in-out infinite;
-      }
-
-      @keyframes blob1-move {
-        0%, 100% { transform: translate(0, 0); }
-        25% { transform: translate(50px, -50px); }
-        50% { transform: translate(-30px, 60px); }
-        75% { transform: translate(40px, 30px); }
-      }
-
-      @keyframes blob2-move {
-        0%, 100% { transform: translate(0, 0); }
-        25% { transform: translate(-40px, 50px); }
-        50% { transform: translate(60px, -40px); }
-        75% { transform: translate(-50px, -50px); }
-      }
-
-      @keyframes blob3-move {
-        0%, 100% { transform: translate(0, 0); }
-        25% { transform: translate(30px, 60px); }
-        50% { transform: translate(-60px, -30px); }
-        75% { transform: translate(50px, -60px); }
-      }
-
-      /* ==================== Navigation ==================== */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        padding: 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        mix-blend-mode: darken;
-      }
-
-      .logo {
-        font-family: "Playfair Display", serif;
-        font-size: 1.8rem;
-        font-weight: 900;
-        letter-spacing: -2px;
-      }
-
-      .nav-menu {
-        display: flex;
-        gap: 3rem;
-        list-style: none;
-      }
-
-      .nav-menu a {
-        text-decoration: none;
-        color: var(--fg);
-        font-weight: 600;
-        position: relative;
-        overflow: hidden;
-        padding: 0.5rem 0;
-      }
-
-      .nav-menu a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: -100%;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, var(--accent), var(--secondary));
-        transition: left 0.3s ease;
-      }
-
-      .nav-menu a:hover::after {
-        left: 0;
-      }
-
-      /* ==================== Hero Section ==================== */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 0 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        z-index: 10;
-      }
-
-      .hero-tag {
-        font-size: 0.95rem;
-        color: var(--accent);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 1rem;
-        animation: slideInLeft 0.6s ease-out;
-      }
-
-      .hero-title {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(3rem, 12vw, 7rem);
-        font-weight: 900;
-        line-height: 0.9;
-        margin-bottom: 1.5rem;
-        animation: slideInUp 0.8s ease-out 0.1s both;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero-subtitle {
-        font-size: clamp(1.2rem, 3vw, 1.8rem);
-        color: var(--fg);
-        font-weight: 300;
-        margin-bottom: 2rem;
-        animation: slideInUp 0.8s ease-out 0.2s both;
-        font-style: italic;
-      }
-
-      .hero-cta {
-        display: flex;
-        gap: 1.5rem;
-        animation: slideInUp 0.8s ease-out 0.3s both;
-      }
-
-      .btn {
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 50px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0.95rem;
-        text-decoration: none;
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: "Space Grotesk", sans-serif;
-      }
-
-      .btn-primary {
-        background: var(--accent);
-        color: white;
-      }
-
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: var(--secondary);
-        z-index: -1;
-        transition: left 0.3s ease;
-      }
-
-      .btn-primary:hover::before {
-        left: 0;
-      }
-
-      .btn-secondary {
-        background: transparent;
-        border: 2px solid var(--fg);
-        color: var(--fg);
-      }
-
-      .btn-secondary:hover {
-        background: var(--fg);
-        color: var(--bg);
-      }
-
-      @keyframes slideInLeft {
-        from { opacity: 0; transform: translateX(-50px); }
-        to { opacity: 1; transform: translateX(0); }
-      }
-
-      @keyframes slideInUp {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      /* ==================== Sections ==================== */
-      section {
-        padding: 8rem 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 10;
-      }
-
-      .section-header {
-        margin-bottom: 5rem;
-      }
-
-      .section-tag {
-        font-size: 0.85rem;
-        color: var(--accent);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 1rem;
-        display: inline-block;
-      }
-
-      .section-title {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(2rem, 8vw, 5rem);
-        font-weight: 900;
-        line-height: 1.1;
-        margin-bottom: 1rem;
-      }
-
-      .section-description {
-        font-size: 1.1rem;
-        color: #666;
-        max-width: 600px;
-        font-style: italic;
-      }
-
-      /* ==================== About Section (Unconventional Layout) ==================== */
-      #about {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      .about-left {
-        position: relative;
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-      }
-
-      .about-card {
-        padding: 2rem;
-        border: 2px solid var(--fg);
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(10px);
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .about-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
-        transition: left 0.5s ease;
-      }
-
-      .about-card:hover::before {
-        left: 100%;
-      }
-
-      .about-card:hover {
-        transform: translate(0, -20px) rotate(2deg);
-        border-color: var(--accent);
-        background: rgba(255, 107, 53, 0.05);
-      }
-
-      .about-card-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        display: inline-block;
-      }
-
-      .about-card-title {
-        font-family: "Instrument Serif", serif;
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .about-card-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: #555;
-      }
-
-      .about-right {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .skills-cloud {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .skill-badge {
-        padding: 0.8rem 1.5rem;
-        border: 2px solid var(--secondary);
-        border-radius: 50px;
-        background: transparent;
-        font-size: 0.9rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .skill-badge:hover {
-        background: var(--secondary);
-        color: white;
-        transform: scale(1.1) rotate(-5deg);
-      }
-
-      /* ==================== Achievements (Masonry-like) ==================== */
-      #achieve {
-        position: relative;
-      }
-
-      .achievements-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .achievement-card {
-        padding: 3rem;
-        border-radius: 25px;
-        background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 78, 137, 0.1) 100%);
-        border: 2px solid transparent;
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .achievement-card::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200px;
-        height: 200px;
-        background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-        opacity: 0;
-        transition: all 0.4s ease;
-      }
-
-      .achievement-card:hover::before {
-        opacity: 0.1;
-        top: -30%;
-        right: -30%;
-      }
-
-      .achievement-card:hover {
-        transform: translate(0, -30px);
-        border-color: var(--accent);
-        background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(0, 78, 137, 0.2) 100%);
-      }
-
-      .achievement-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .achievement-title {
-        font-family: "Instrument Serif", serif;
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-
-      .achievement-text {
-        color: #555;
-        line-height: 1.8;
-      }
-
-      .achievement-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 1rem;
-      }
-
-      .achievement-tag {
-        font-size: 0.8rem;
-        background: var(--accent);
-        color: white;
-        padding: 0.4rem 0.9rem;
-        border-radius: 50px;
-        font-weight: 600;
-      }
-
-      /* ==================== Contact Section (Asymmetric) ==================== */
-      #contact {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: start;
-      }
-
-      .contact-info {
-        padding-top: 2rem;
-      }
-
-      .contact-item {
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #ddd;
-      }
-
-      .contact-item:last-child {
-        border-bottom: none;
-      }
-
-      .contact-label {
-        font-size: 0.85rem;
-        color: var(--accent);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 0.5rem;
-      }
-
-      .contact-value {
-        font-family: "Instrument Serif", serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        transition: all 0.3s ease;
-      }
-
-      .contact-value:hover {
-        color: var(--accent);
-      }
-
-      .contact-form {
-        background: rgba(255, 107, 53, 0.08);
-        padding: 3rem;
-        border-radius: 25px;
-        border: 2px solid var(--accent);
-      }
-
-      .form-group {
-        margin-bottom: 2rem;
-      }
-
-      .form-label {
-        display: block;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-      }
-
-      .form-input,
-      .form-textarea {
-        width: 100%;
-        padding: 1rem;
-        border: 2px solid #ddd;
-        border-radius: 12px;
-        font-family: inherit;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.8);
-      }
-
-      .form-input:focus,
-      .form-textarea:focus {
-        outline: none;
-        border-color: var(--accent);
-        background: white;
-        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-      }
-
-      .form-textarea {
-        resize: vertical;
-        min-height: 140px;
-      }
-
-      /* ==================== Footer ==================== */
-      footer {
-        padding: 4rem 2rem;
-        border-top: 1px solid #ddd;
-        text-align: center;
-      }
-
-      .footer-content {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .social-link {
-        width: 60px;
-        height: 60px;
-        border: 2px solid var(--fg);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        text-decoration: none;
-        color: var(--fg);
-        transition: all 0.3s ease;
-      }
-
-      .social-link:hover {
-        background: var(--accent);
-        border-color: var(--accent);
-        transform: rotate(15deg) scale(1.1);
-      }
-
-      .footer-text {
-        font-size: 0.95rem;
-        color: #666;
-      }
-
-      /* ==================== Responsive ==================== */
-      @media (max-width: 768px) {
-        #about,
-        #contact {
-          grid-template-columns: 1fr;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #fafaf8;
+            --fg: #0a0a0a;
+            --accent: #ff6b35;
+            --secondary: #004e89;
+            --tertiary: #f7b801;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+        }
+
+        /* ==================== Animated Background ==================== */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            mix-blend-mode: multiply;
+            filter: blur(80px);
+            opacity: 0.4;
+            will-change: transform;
+            border-radius: 50%;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: #ff6b35;
+            top: -100px;
+            left: 5%;
+            animation: blob1-move 15s ease-in-out infinite;
+        }
+
+        .blob-2 {
+            width: 350px;
+            height: 350px;
+            background: #004e89;
+            top: 50%;
+            right: 5%;
+            animation: blob2-move 18s ease-in-out infinite;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: #f7b801;
+            bottom: -50px;
+            left: 40%;
+            animation: blob3-move 20s ease-in-out infinite;
+        }
+
+        @keyframes blob1-move {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, 50px) scale(1.1); }
+            50% { transform: translate(-50px, 100px) scale(0.9); }
+            75% { transform: translate(30px, -30px) scale(1.05); }
+        }
+
+        @keyframes blob2-move {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-60px, 80px) scale(0.95); }
+            50% { transform: translate(40px, -40px) scale(1.1); }
+            75% { transform: translate(-30px, -60px) scale(1); }
+        }
+
+        @keyframes blob3-move {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(60px, -50px) scale(1.08); }
+            50% { transform: translate(-80px, 60px) scale(0.92); }
+            75% { transform: translate(20px, 30px) scale(1.05); }
+        }
+
+        /* ==================== Navigation ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 250, 248, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-menu {
-          gap: 1.5rem;
-          font-size: 0.9rem;
+            display: flex;
+            gap: 3rem;
+            list-style: none;
         }
 
-        .achievements-grid {
-          grid-template-columns: 1fr;
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--fg);
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
         }
 
-        section {
-          padding: 4rem 1.5rem;
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-menu a:hover::after {
+            left: 0;
+        }
+
+        /* ==================== Hero Section ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(247, 184, 1, 0.03) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 10;
+            perspective: 1000px;
+        }
+
+        .hero-tag {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hero-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(3.5rem, 14vw, 8rem);
+            font-weight: 900;
+            line-height: 0.85;
+            margin-bottom: 1.5rem;
+            animation: slideInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 50%, var(--tertiary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: slideInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both, gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            color: var(--secondary);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            animation: slideInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+            font-style: italic;
+            letter-spacing: -0.5px;
         }
 
         .hero-cta {
-          flex-direction: column;
+            display: flex;
+            gap: 2rem;
+            animation: slideInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
         }
 
         .btn {
-          width: 100%;
-          text-align: center;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: "Space Grotesk", sans-serif;
+            transform: translateZ(0);
         }
-      }
 
-      /* ==================== Scroll Animation ==================== */
-      .reveal {
-        opacity: 0;
-        transform: translateY(50px);
-        animation: revealUp 0.8s ease-out forwards;
-      }
-
-      @keyframes revealUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
         }
-      }
+
+        .btn-primary:hover {
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.5);
+            transform: translateY(-8px) translateZ(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 3px solid var(--fg);
+            color: var(--fg);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--fg);
+            color: var(--bg);
+            transform: translateY(-8px);
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-80px) rotateY(30deg); }
+            to { opacity: 1; transform: translateX(0) rotateY(0deg); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(80px) rotateX(20deg); }
+            to { opacity: 1; transform: translateY(0) rotateX(0deg); }
+        }
+
+        /* ==================== Sections - Horizontal Scroll Layout ==================== */
+        .sections-container {
+            position: relative;
+            z-index: 10;
+        }
+
+        section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .section-description {
+            font-size: 1.15rem;
+            color: #666;
+            max-width: 700px;
+            font-style: italic;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* ==================== About Section ==================== */
+        #about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .about-card {
+            padding: 2.5rem;
+            border: 3px solid var(--fg);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+        }
+
+        .about-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+
+        .about-card:hover {
+            transform: translate(0, -25px) rotate(-2deg) scale(1.02) translateZ(0);
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .about-card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateZ(0deg); }
+            50% { transform: translateY(-15px) rotateZ(5deg); }
+        }
+
+        .about-card-title {
+            font-family: "Instrument Serif", serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .about-card-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .skill-badge {
+            padding: 1rem 1.8rem;
+            border: 3px solid var(--secondary);
+            border-radius: 50px;
+            background: rgba(0, 78, 137, 0.05);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        .skill-badge:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.15) rotate(-5deg) translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 78, 137, 0.3);
+        }
+
+        /* ==================== Achievements Grid ==================== */
+        #achieve {
+            position: relative;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            padding: 3.5rem;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(0, 78, 137, 0.08) 100%);
+            border: 2px solid transparent;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transform: translateZ(0);
+        }
+
+        .achievement-card::before {
+            content: "";
+            position: absolute;
+            inset: -50%;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .achievement-card:hover::before {
+            opacity: 0.15;
+            inset: -20%;
+        }
+
+        .achievement-card:hover {
+            transform: translate(0, -40px) rotate(2deg) scale(1.05) translateZ(0);
+            border-color: var(--accent);
+            box-shadow: 0 40px 80px rgba(255, 107, 53, 0.15);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(0, 78, 137, 0.15) 100%);
+        }
+
+        .achievement-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bob 4s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        .achievement-title {
+            font-family: "Instrument Serif", serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .achievement-text {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievement-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .achievement-tag {
+            font-size: 0.8rem;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            color: white;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-tag:hover {
+            transform: scale(1.1);
+        }
+
+        /* ==================== Contact Section - Split Layout ==================== */
+        #contact {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            padding-top: 3rem;
+        }
+
+        .contact-item {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 2px solid #e0e0e0;
+            animation: fadeInUp 0.8s ease-out both;
+            animation-delay: calc(var(--index, 0) * 0.1s);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-value {
+            font-family: "Instrument Serif", serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-value:hover {
+            color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 184, 1, 0.1) 100%);
+            padding: 3.5rem;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1.1rem;
+            border: 2px solid rgba(10, 10, 10, 0.2);
+            border-radius: 15px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1), 0 10px 30px rgba(255, 107, 53, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* ==================== Footer ==================== */
+        footer {
+            padding: 5rem 2rem;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            background: linear-gradient(180deg, transparent 0%, rgba(247, 184, 1, 0.03) 100%);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-link {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--fg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            text-decoration: none;
+            color: var(--fg);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: rotate(25deg) scale(1.15) translateY(-15px);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.3);
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* ==================== Responsive ==================== */
+        @media (max-width: 768px) {
+            #about,
+            #contact {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2.5rem;
+            }
+        }
+
+        /* ==================== Scroll Animation ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotateX(20deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0deg);
+            }
+        }
+
+        .reveal {
+            animation: fadeInUp 0.8s ease-out forwards !important;
+        }
+
+        /* ==================== Smooth Scroll ==================== */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="bg-animation">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
 
     <nav>
-      <div class="logo">AK</div>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#achieve">Achievements</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+        <div class="logo">AK</div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#achieve">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-tag">👋 Accepting new side quests</div>
-        <h1 class="hero-title">Hi, I'm Amritanshu</h1>
-        <p class="hero-subtitle">𝚙𝚛𝚎𝚜𝚎𝚗𝚝, 𝚢𝚎𝚝 𝚎𝚕𝚜𝚎𝚠𝚑𝚎𝚛𝚎 👻</p>
-        <div class="hero-cta">
-          <a href="#achieve" class="btn btn-primary">View Achievements</a>
-          <a href="#contact" class="btn btn-secondary">Let's Talk</a>
-        </div>
-      </div>
-    </section>
+    <div class="sections-container">
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-tag">👋 Accepting new side quests</div>
+                <h1 class="hero-title">Hi, I'm Amritanshu</h1>
+                <p class="hero-subtitle">𝚙𝚛𝚎𝚜𝚎𝚗𝚝, 𝚢𝚎𝚝 𝚎𝚕𝚜𝚎𝚠𝚑𝚎𝚛𝚎 👻</p>
+                <div class="hero-cta">
+                    <a href="#achieve" class="btn btn-primary">View Achievements</a>
+                    <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+                </div>
+            </div>
+        </section>
 
-    <section id="about" class="reveal">
-      <div class="about-left">
-        <div class="section-header">
-          <span class="section-tag">About Me</span>
-          <h2 class="section-title">What I Do</h2>
-          <p class="section-description">The answer is simple: Nothing.</p>
-        </div>
-        <div class="about-grid">
-          <div class="about-card">
-            <div class="about-card-icon">🦥</div>
-            <h3 class="about-card-title">Procrastination</h3>
-            <p class="about-card-description">Mastering the ancient art of delaying important tasks. Sure, deadlines exist... but so does Netflix</p>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">🧊</div>
-            <h3 class="about-card-title">Chilling</h3>
-            <p class="about-card-description">Professionally cool under pressure. I bring a refreshing sense of calm—mostly because I forgot what I was supposed to do.</p>
-          </div>
-          <div class="about-card">
-            <div class="about-card-icon">🛸</div>
-            <h3 class="about-card-title">Alien Technology</h3>
-            <p class="about-card-description">Allegedly optimizing things with mysterious methods unknown to mankind. Results may never be recognized.</p>
-          </div>
-          <div class="about-card" style="grid-column: 1 / -1;">
-            <div class="about-card-icon">👻</div>
-            <h3 class="about-card-title">The Ghost Within</h3>
-            <p class="about-card-description">Somewhere between existing and non-existing, I find the perfect balance of doing absolutely nothing while being absolutely everywhere.</p>
-          </div>
-        </div>
-      </div>
-      <div class="about-right">
-        <div>
-          <h3 style="font-family: 'Instrument Serif', serif; font-size: 1.3rem; margin-bottom: 1rem;">My Skills</h3>
-          <div class="skills-cloud">
-            <div class="skill-badge">Daydreaming</div>
-            <div class="skill-badge">Sleeping</div>
-            <div class="skill-badge">No Idea</div>
-            <div class="skill-badge">Ignorant</div>
-            <div class="skill-badge">Unlucky</div>
-            <div class="skill-badge">Ghost? 👻</div>
-            <div class="skill-badge">Blank</div>
-            <div class="skill-badge">F1 Lover</div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="about">
+            <div>
+                <div class="section-header">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title">What I Do</h2>
+                    <p class="section-description">The answer is simple: Nothing.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="about-card-icon">🦥</div>
+                        <h3 class="about-card-title">Procrastination</h3>
+                        <p class="about-card-description">Mastering the ancient art of delaying important tasks. Sure, deadlines exist... but so does Netflix</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">🧊</div>
+                        <h3 class="about-card-title">Chilling</h3>
+                        <p class="about-card-description">Professionally cool under pressure. I bring a refreshing sense of calm—mostly because I forgot what I was supposed to do.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">🛸</div>
+                        <h3 class="about-card-title">Alien Technology</h3>
+                        <p class="about-card-description">Allegedly optimizing things with mysterious methods unknown to mankind. Results may never be recognized.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">👻</div>
+                        <h3 class="about-card-title">The Ghost Within</h3>
+                        <p class="about-card-description">Somewhere between existing and non-existing, I find the perfect balance of doing absolutely nothing while being absolutely everywhere.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="font-family: 'Instrument Serif', serif; font-size: 1.5rem; margin-bottom: 2rem; margin-top: 3rem;">My Skills</h3>
+                <div class="skills-cloud">
+                    <div class="skill-badge">Daydreaming</div>
+                    <div class="skill-badge">Sleeping</div>
+                    <div class="skill-badge">No Idea</div>
+                    <div class="skill-badge">Ignorant</div>
+                    <div class="skill-badge">Unlucky</div>
+                    <div class="skill-badge">Ghost? 👻</div>
+                    <div class="skill-badge">Blank</div>
+                    <div class="skill-badge">F1 Lover</div>
+                </div>
+            </div>
+        </section>
 
-    <section id="achieve" class="reveal">
-      <div class="section-header">
-        <span class="section-tag">Hall of Fame</span>
-        <h2 class="section-title">Distinguished Feats</h2>
-        <p class="section-description">Adventures in avoiding responsibility or discovering new snacks.</p>
-      </div>
-      <div class="achievements-grid">
-        <div class="achievement-card">
-          <div class="achievement-icon">∅</div>
-          <h3 class="achievement-title">Doing Nothing</h3>
-          <p class="achievement-text">Perfecting the Art of Doing Nothing. I have mastered the skill of absolute idleness, achieving a state of pure relaxation and blissful inactivity.</p>
-          <div class="achievement-tags">
-            <span class="achievement-tag">😪</span>
-            <span class="achievement-tag">😴</span>
-            <span class="achievement-tag">🥱</span>
-          </div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-icon">💪</div>
-          <h3 class="achievement-title">Strange Superpowers</h3>
-          <p class="achievement-text">Talents nobody asked for, but everyone respects.</p>
-          <div class="achievement-tags">
-            <span class="achievement-tag">Typo Generator 📝</span>
-            <span class="achievement-tag">Overthinker of the Year 🧠</span>
-            <span class="achievement-tag">Caffeine Tolerance 🥤</span>
-          </div>
-        </div>
-        <div class="achievement-card">
-          <div class="achievement-icon">📉</div>
-          <h3 class="achievement-title">Unofficial Life Stats</h3>
-          <p class="achievement-text">Keeping score on things that don't matter at all. Just like you never did to someone.</p>
-          <div class="achievement-tags">
-            <span class="achievement-tag">Tabs: "Infinity"</span>
-            <span class="achievement-tag">Snoozes: "Record"</span>
-            <span class="achievement-tag">Deceived: "Everytime"</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="achieve">
+            <div class="section-header">
+                <span class="section-tag">Hall of Fame</span>
+                <h2 class="section-title">Distinguished Feats</h2>
+                <p class="section-description">Adventures in avoiding responsibility or discovering new snacks.</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">∅</div>
+                    <h3 class="achievement-title">Doing Nothing</h3>
+                    <p class="achievement-text">Perfecting the Art of Doing Nothing. I have mastered the skill of absolute idleness, achieving a state of pure relaxation and blissful inactivity.</p>
+                    <div class="achievement-tags">
+                        <span class="achievement-tag">😪</span>
+                        <span class="achievement-tag">😴</span>
+                        <span class="achievement-tag">🥱</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💪</div>
+                    <h3 class="achievement-title">Strange Superpowers</h3>
+                    <p class="achievement-text">Talents nobody asked for, but everyone respects.</p>
+                    <div class="achievement-tags">
+                        <span class="achievement-tag">Typo Generator 📝</span>
+                        <span class="achievement-tag">Overthinker of the Year 🧠</span>
+                        <span class="achievement-tag">Caffeine Tolerance 🥤</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📉</div>
+                    <h3 class="achievement-title">Unofficial Life Stats</h3>
+                    <p class="achievement-text">Keeping score on things that don't matter at all. Just like you never did to someone.</p>
+                    <div class="achievement-tags">
+                        <span class="achievement-tag">Tabs: "Infinity"</span>
+                        <span class="achievement-tag">Snoozes: "Record"</span>
+                        <span class="achievement-tag">Deceived: "Everytime"</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="contact" class="reveal">
-      <div class="contact-info">
-        <div class="section-header">
-          <span class="section-tag">Get In Touch</span>
-          <h2 class="section-title">Let's Talk!!</h2>
-          <p class="section-description">Have something in mind? I'd love to hear from you. Let's create something amazing together.</p>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label">Email</div>
-          <a href="mailto:amritanshu@duck.com" style="text-decoration: none; color: inherit;">
-            <div class="contact-value">amritanshu@duck.com</div>
-          </a>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label">GitHub</div>
-          <a href="https://github.com/theak12" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-            <div class="contact-value">@theak12</div>
-          </a>
-        </div>
-        <div class="contact-item">
-          <div class="contact-label">Instagram</div>
-          <a href="https://www.instagram.com/amritexists/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-            <div class="contact-value">@amritexists</div>
-          </a>
-        </div>
-      </div>
-      <form class="contact-form" id="contactForm">
-        <div class="form-group">
-          <label class="form-label">Name</label>
-          <input type="text" class="form-input" required placeholder="Your name" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" required placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" required placeholder="Tell me, I am all ears..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-      </form>
-    </section>
+        <section id="contact">
+            <div class="contact-info">
+                <div class="section-header">
+                    <span class="section-tag">Get In Touch</span>
+                    <h2 class="section-title">Let's Talk!!</h2>
+                    <p class="section-description">Have something in mind? I'd love to hear from you. Let's create something amazing together.</p>
+                </div>
+                <div class="contact-item" style="--index: 0">
+                    <div class="contact-label">Email</div>
+                    <a href="mailto:amritanshu@duck.com" style="text-decoration: none; color: inherit;">
+                        <div class="contact-value">amritanshu@duck.com</div>
+                    </a>
+                </div>
+                <div class="contact-item" style="--index: 1">
+                    <div class="contact-label">GitHub</div>
+                    <a href="https://github.com/theak12" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        <div class="contact-value">@theak12</div>
+                    </a>
+                </div>
+                <div class="contact-item" style="--index: 2">
+                    <div class="contact-label">Instagram</div>
+                    <a href="https://www.instagram.com/amritexists/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        <div class="contact-value">@amritexists</div>
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" required placeholder="Your name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" required placeholder="your@email.com" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" required placeholder="Tell me, I am all ears..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+        </section>
+    </div>
 
     <footer>
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://github.com/theak12" target="_blank" rel="noopener noreferrer" class="social-link">💻</a>
-          <a href="https://www.instagram.com/amritexists/" target="_blank" rel="noopener noreferrer" class="social-link">📸</a>
-          <a href="https://www.reddit.com/user/Ecstatic_Rub_548/" target="_blank" rel="noopener noreferrer" class="social-link">🤖</a>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/theak12" target="_blank" rel="noopener noreferrer" class="social-link">💻</a>
+                <a href="https://www.instagram.com/amritexists/" target="_blank" rel="noopener noreferrer" class="social-link">📸</a>
+                <a href="https://www.reddit.com/user/Ecstatic_Rub_548/" target="_blank" rel="noopener noreferrer" class="social-link">🤖</a>
+            </div>
+            <p class="footer-text">&copy; 2024 Amritanshu. Present, yet elsewhere 👻</p>
+            <p class="footer-text">Crafted with nothing and everything</p>
         </div>
-        <p class="footer-text">&copy; 2024 Amritanshu. Present, yet elsewhere 👻</p>
-        <p class="footer-text">Crafted with nothing and everything</p>
-      </div>
     </footer>
 
     <script>
-      // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
-      });
 
-      // Reveal animations on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-      };
+        // Reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-            observer.unobserve(entry.target);
-          }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section:not(#home)').forEach(el => {
+            observer.observe(el);
         });
-      }, observerOptions);
 
-      document.querySelectorAll('section:not(.hero)').forEach(el => {
-        observer.observe(el);
-      });
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Message received! I\'ll get back to you soon.');
+            e.target.reset();
+        });
 
-      // Form submission
-      document.getElementById('contactForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Message received! I\'ll get back to you soon.');
-        e.target.reset();
-      });
+        // Mouse parallax effect on blobs
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            blobs.forEach((blob, index) => {
+                const moveX = x * (50 - index * 15);
+                const moveY = y * (50 - index * 15);
+                blob.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
